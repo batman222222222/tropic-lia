@@ -1,21 +1,36 @@
-document.addEventListener('DOMContentLoaded', function(){
-    const aumentaFonteBotao = document.getElementById("aumentar-fonte");
-    const diminuirFonteBotao = document.getElementById("diminuir-fonte")
+document.addEventListener('DOMContentLoaded',function (){
+    const aumentaFonteBotao = document.getElementById
+    ('aumentar-fonte');
+    const diminuirFonteBotao = document.getElementById
+    ('diminuir-fonte');
+    const alternaContraste = document.getElementById
+    ('alterna-contraste');
+
      let tamanhoAtualFonte = 1;
 
-    aumentaFonteBotao.addEventListener("click" , function(){
-     tamanhoAtualFonte += 0.1;
+       aumentaFonteBotao.addEventListener('click',function(){
+         tamanhoAtualFonte += 0.1;
+          document.body.style.fontSize = `${tamanhoAtualFonte}rem`
+        })
+       diminuirFonteBotao.addEventListener('click',function(){
+        tamanhoAtualFonte -= 0.1;
+        document.body.style.fontSize = `${tamanhoAtualFonte}rem`
+       })
 
-      document.body.style.fontSize = `${tamanhoAtualFonte}rem`
-    })
-    diminuirFonteBotao.addEventListener("click" , function(){
-    
-      tamanhoAtualFonte -= 0.1;
-    document.body.style.fontSize = `${tamanhoAtualFonte}rem`
-    })
-})
-const botaoDeAcessibilidade = document.getElementById('botao-acessibidade');
-const opcoesDeAcessibilidade = document.getAnimations('opcoes-acessibilidade');
-  botaoDeAcessibilidade.addEventListener('click' , function (){
+const botaoDeAcessibilidade = document.getElementById('botao-acessibilidade');
+const opcoesDeAcesibilidade = document.getElementById('opcoes-acessibilidade');
+  botaoDeAcessibilidade.addEventListener('click', function (){
     botaoDeAcessibilidade.classList.toggle('rotacao-botao');
-    opcoesDeAcessibilidade.classList.toggle('apresenta-lista');
+    opcoesDeAcesibilidade.classList.toggle('apresenta-lista');
+    const botaoSelecionado = botaoDeAcessibilidade.getAttribute
+    ('aria-expanded') === 'true';
+      botaoDeAcessibilidade.setAttribute('aria-expanded',!botaoSelecionado);
+  })
+  alternaContraste.addEventListener('click', function(){
+    document.body.classList.toggle('alto-contraste')
+})
+})
+
+  
+
+
